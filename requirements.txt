@@ -1,0 +1,9 @@
+albumentations
+sklearn
+numpy
+PIL
+cv2
+omegaconf
+rich
+ultralytics
+hydra

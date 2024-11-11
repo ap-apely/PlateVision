@@ -1,0 +1,39 @@
+basic:
+  use_cuda: true
+  yolo_model: ./license_plates_box/weights/license_plates_detection.pt
+  text_model: ./license_plates_text/weights/license_plates_text.pth
+  
+additional:
+  image_resolution_x: 1920
+  image_resolution_y: 1080
+
+text_recognition:
+  defaults:
+    - override hydra/job_logging: custom
+    
+  processing:
+    device: cuda
+    image_width: 180
+    image_height: 50 
+    
+  training:
+    lr: 3e-4
+    batch_size: 8
+    num_workers: 4
+    num_epochs: 10
+
+  bools:
+    DISPLAY_ONLY_WRONG_PREDICTIONS: true
+    VIEW_INFERENCE_WHILE_TRAINING: true
+    SAVE_CHECKPOINTS: false
+
+  paths:
+    dataset_dir: ./dataset/train/img
+    save_model_as: ./logs/2.pth
+
+  model:
+    use_attention: true 
+    use_ctc: true
+    gray_scale: true
+    dims: 256
+  
