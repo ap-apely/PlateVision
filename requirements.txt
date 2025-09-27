@@ -1,9 +1,11 @@
 albumentations
-sklearn
+scikit-learn
 numpy
-PIL
-cv2
+Pillow
+opencv-python
 omegaconf
 rich
 ultralytics
-hydra
+hydra-core
+torch
+torchvision

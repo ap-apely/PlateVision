@@ -4,8 +4,6 @@ import numpy as np
 from PIL import Image
 from omegaconf import OmegaConf
 
-import hydra
-
 from rich.console import Console
 from rich import print
 from rich.table import Table
@@ -21,8 +19,9 @@ def parse_args():
     parser.add_argument("image_path", type=str, help="Path to the input image")
     return parser.parse_args()
 
-@hydra.main(config_path="./config", config_name="config", version_base=None)
-def main(cfg):
+def main():
+    # Load config manually
+    cfg = OmegaConf.load("./config/config.yaml")
     args = parse_args()
 
     image_path = args.image_path
@@ -33,6 +32,12 @@ def main(cfg):
 
     console.print(f"[bold green]Loading image from:[/bold green] {image_path}")
     image = cv2.imread(image_path)
+    
+    if image is None:
+        console.print(f"[bold red]Error:[/bold red] Could not load image from {image_path}")
+        return
+    
+    # ... rest of your existing code remains the same
     original_shape = image.shape
     console.log(f"Original image shape: {original_shape}")
 
