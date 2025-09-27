@@ -1,11 +1,8 @@
 import argparse
 import cv2
-import numpy as np
-from PIL import Image
 from omegaconf import OmegaConf
 
 from rich.console import Console
-from rich import print
 from rich.table import Table
 
 from license_plates_box.license_plates import LicensePlateDetector, Detection
